@@ -24,4 +24,20 @@ const createProjectsTable = async () => {
     `;
 };
 
-module.exports = { createClientsTable, createProjectsTable };
+const createPunchesTable = async () => {
+    await sql`
+        CREATE TABLE IF NOT EXISTS punches(
+            punch_id        SERIAL                      PRIMARY KEY,
+            start           TIMESTAMP WITH TIME ZONE    NOT NULL,
+            end             TIMESTAMP WITH TIME ZONE,
+            description     TEXT,
+            rate            REAL
+        );
+    `;
+};
+
+module.exports = {
+    createClientsTable,
+    createProjectsTable,
+    createPunchesTable
+};
